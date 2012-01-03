@@ -44,6 +44,6 @@
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>CFHasVideoPlayerTab</key>
-	<false/>
+	<true/>
 </dict>
 </plist>

@@ -267,7 +267,7 @@ enum TAB_INDEX {
 
 - (BOOL)hasVideoPlayerTab
 {
-    return (BOOL)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasVideoPlayerTab"];
+    return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasVideoPlayerTab"]boolValue];
 }
 
 - (void) gotoVideoPlayerTab
