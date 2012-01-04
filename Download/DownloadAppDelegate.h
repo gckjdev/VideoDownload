@@ -14,7 +14,11 @@
 #import "PPTabBarController.h"
 #import "ReviewRequest.h"
 #import "WebViewTouchWindow.h"
+#import "BookController.h"
+#import "WallpaperController.h"
+#import "MusicPlayController.h"
 #import "VideoPlayController.h"
+#import "DownloadService.h"
 
 #define kAppId			@"488119324"					// To be changed for each project
 #define kMobClickKey	@"4ec3d3045270151da9000025"		// To be changed for each project
@@ -33,7 +37,19 @@
 
 
 - (void) setSeletedTabbarIndex:(NSInteger)index;
+- (BOOL)hasMusicPlayerTab;
+- (void) gotoMusicPlayerTab;
+- (MusicPlayController*) getMusicPlayerTab;
+
+- (BOOL)hasWallpaperTab;
+- (void) gotoWallpaperTab;
+- (WallpaperController*) getWallpaperTab;
+
 - (BOOL)hasVideoPlayerTab;
 - (void) gotoVideoPlayerTab;
 - (VideoPlayController*) getVideoPlayerTab;
+
+- (BOOL)hasBookTab;
+- (void) gotoBookTab;
+- (BookController*) getBookTab;
 @end

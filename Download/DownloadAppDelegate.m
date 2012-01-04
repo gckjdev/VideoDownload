@@ -18,13 +18,18 @@
 #import "ResourceCategoryController.h"
 #import "AboutController.h"
 #import "VideoPlayController.h"
-
+#import "BookController.h"
+#import "WallpaperController.h"
+#import "MusicPlayController.h"
 #import "DownloadService.h"
 #import "ResourceService.h"
 
 #import "DownloadResource.h"
 
+#define MUSICPLAYER_TAB 4
+#define WALLPAPER_TAB 4
 #define VIDEOPLAYER_TAB 4
+#define BOOK_TAB 4
 
 NSString* GlobalGetServerURL()
 {
@@ -265,6 +270,38 @@ enum TAB_INDEX {
     [_tabBarController selectedTab:button];
 }
 
+// for Music
+- (BOOL)hasMusicPlayerTab
+{
+    return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasMusicPlayerTab"]boolValue];
+}
+
+- (void) gotoMusicPlayerTab
+{
+    [self setSeletedTabbarIndex:MUSICPLAYER_TAB];
+}
+
+- (MusicPlayController*) getMusicPlayerTab
+{
+    return (MusicPlayController*)([[self.tabBarController.viewControllers objectAtIndex:MUSICPLAYER_TAB] topViewController]);
+}
+// for Wallpaper
+- (BOOL)hasWallpaperTab
+{
+    return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasWallpaperTab"]boolValue];
+}
+
+- (void) gotoWallpaperTab
+{
+    [self setSeletedTabbarIndex:WALLPAPER_TAB];
+}
+
+- (WallpaperController*) getWallpaperTab
+{
+    return (WallpaperController*)([[self.tabBarController.viewControllers objectAtIndex:WALLPAPER_TAB] topViewController]);
+} 
+
+// for Video
 - (BOOL)hasVideoPlayerTab
 {
     return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasVideoPlayerTab"]boolValue];
@@ -279,6 +316,25 @@ enum TAB_INDEX {
 {
     return (VideoPlayController*)([[self.tabBarController.viewControllers objectAtIndex:VIDEOPLAYER_TAB] topViewController]);
 }
+
+// for Book
+
+- (BOOL)hasBookTab
+{
+    return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasBookTab"]boolValue];
+}
+
+- (void) gotoBookTab
+{
+    [self setSeletedTabbarIndex:BOOK_TAB];
+}
+
+- (BookController*) getBookTab
+{
+    return (BookController*)([[self.tabBarController.viewControllers objectAtIndex:BOOK_TAB] topViewController]);
+}
+
+
 
 
 @end
