@@ -92,17 +92,20 @@ enum TAB_INDEX {
     
 	NSMutableArray* controllers = [[NSMutableArray alloc] init];
     
-	[UIUtils addViewController:[TopDownloadController alloc]
-					 viewTitle:NSLS(@"kFirstViewTitle")
-					 viewImage:TOP_ICON
-			  hasNavController:YES			
-			   viewControllers:controllers];	
-    
-	[UIUtils addViewController:[ResourceCategoryController alloc]
-					 viewTitle:NSLS(@"kSecondViewTitle")
-					 viewImage:RESOURCE_ICON
-			  hasNavController:YES			
-			   viewControllers:controllers];	
+    if ([LocaleUtils isChina]){
+
+        [UIUtils addViewController:[TopDownloadController alloc]
+                         viewTitle:NSLS(@"kFirstViewTitle")
+                         viewImage:TOP_ICON
+                  hasNavController:YES			
+                   viewControllers:controllers];	
+        
+        [UIUtils addViewController:[ResourceCategoryController alloc]
+                         viewTitle:NSLS(@"kSecondViewTitle")
+                         viewImage:RESOURCE_ICON
+                  hasNavController:YES			
+                   viewControllers:controllers];	
+    }
     
 	[UIUtils addViewController:[BrowseController alloc]
                      viewTitle:NSLS(@"kThirdViewTitle")				 
@@ -128,7 +131,10 @@ enum TAB_INDEX {
 //              hasNavController:YES			
 //               viewControllers:controllers];	        
     
-    [self.tabBarController setSelectedImageArray:[NSArray arrayWithObjects:
+    
+    if ([LocaleUtils isChina]){
+
+        [self.tabBarController setSelectedImageArray:[NSArray arrayWithObjects:
                                                   TOP_PRESS_ICON, 
                                                   RESOURCE_PRESS_ICON, 
                                                   BROWSE_PRESS_ICON, 
@@ -136,9 +142,20 @@ enum TAB_INDEX {
                                                   DOWNLOAD_PRESS_ICON,
 //                                                  ABOUT_PRESS_ICON, 
                                                   nil]];
+
+        self.tabBarController.selectedIndex = TAB_BROWSE;
+    }
+    else{
+        [self.tabBarController setSelectedImageArray:[NSArray arrayWithObjects:
+                                                      BROWSE_PRESS_ICON, 
+                                                      DOWNLOAD_PRESS_ICON,
+                                                      DOWNLOAD_PRESS_ICON,
+                                                      //                                                  ABOUT_PRESS_ICON, 
+                                                      nil]];
+        
+    }
     	
 	self.tabBarController.viewControllers = controllers;	
-    self.tabBarController.selectedIndex = TAB_BROWSE;
 	[controllers release];
 }
 
