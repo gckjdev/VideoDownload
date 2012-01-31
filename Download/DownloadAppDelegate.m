@@ -28,7 +28,7 @@
 
 #define MUSICPLAYER_TAB 4
 #define WALLPAPER_TAB 4
-#define VIDEOPLAYER_TAB 2
+//#define VIDEOPLAYER_TAB 2
 #define BOOK_TAB 4
 
 NSString* GlobalGetServerURL()
@@ -54,6 +54,7 @@ enum TAB_INDEX {
 @synthesize tabBarController = _tabBarController;
 @synthesize dataManager;
 @synthesize reviewRequest;
+@synthesize videoPlayerTab;
 
 - (NSString *)appKey
 {
@@ -92,6 +93,8 @@ enum TAB_INDEX {
     
 	NSMutableArray* controllers = [[NSMutableArray alloc] init];
     
+    self.videoPlayerTab = 2;
+    
     if ([LocaleUtils isChina]){
 
         [UIUtils addViewController:[TopDownloadController alloc]
@@ -104,7 +107,9 @@ enum TAB_INDEX {
                          viewTitle:NSLS(@"kSecondViewTitle")
                          viewImage:RESOURCE_ICON
                   hasNavController:YES			
-                   viewControllers:controllers];	
+                   viewControllers:controllers];
+        
+        self.videoPlayerTab = 4;
     }
     
 	[UIUtils addViewController:[BrowseController alloc]
@@ -317,12 +322,12 @@ enum TAB_INDEX {
 
 - (void) gotoVideoPlayerTab
 {
-    [self setSeletedTabbarIndex:VIDEOPLAYER_TAB];
+    [self setSeletedTabbarIndex:self.videoPlayerTab];
 }
 
 - (VideoPlayController*) getVideoPlayerTab
 {
-    return (VideoPlayController*)([[self.tabBarController.viewControllers objectAtIndex:VIDEOPLAYER_TAB] topViewController]);
+    return (VideoPlayController*)([[self.tabBarController.viewControllers objectAtIndex:self.videoPlayerTab] topViewController]);
 }
 
 // for Book
