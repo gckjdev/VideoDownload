@@ -93,7 +93,6 @@ enum TAB_INDEX {
     
 	NSMutableArray* controllers = [[NSMutableArray alloc] init];
     
-    self.videoPlayerTab = 2;
     
     if ([LocaleUtils isChina]){
 
@@ -110,6 +109,9 @@ enum TAB_INDEX {
                    viewControllers:controllers];
         
         self.videoPlayerTab = 4;
+    }
+    else{
+        self.videoPlayerTab = 2;
     }
     
 	[UIUtils addViewController:[BrowseController alloc]
