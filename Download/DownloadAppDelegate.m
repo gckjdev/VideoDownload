@@ -28,7 +28,7 @@
 
 #define MUSICPLAYER_TAB 4
 #define WALLPAPER_TAB 4
-#define VIDEOPLAYER_TAB 4
+#define VIDEOPLAYER_TAB 2
 #define BOOK_TAB 4
 
 NSString* GlobalGetServerURL()
