@@ -34,6 +34,7 @@
 @property (nonatomic, retain) PPTabBarController	*tabBarController;
 @property (nonatomic, retain) CoreDataManager       *dataManager;
 @property (nonatomic, retain) ReviewRequest         *reviewRequest;
+@property (nonatomic, assign) int videoPlayerTab;
 
 
 - (void) setSeletedTabbarIndex:(NSInteger)index;
