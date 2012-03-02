@@ -28,7 +28,9 @@
 
 #define MUSICPLAYER_TAB 4
 #define WALLPAPER_TAB 4
-#define VIDEOPLAYER_TAB 4
+#define VIDEOPLAYER_TAB_CHINA 4
+#define VIDEOPLAYER_TAB_NOT_CHINA 2
+
 #define BOOK_TAB 4
 
 NSString* GlobalGetServerURL()
@@ -315,14 +317,22 @@ enum TAB_INDEX {
     return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFHasVideoPlayerTab"]boolValue];
 }
 
-- (void) gotoVideoPlayerTab
+- (int)getVideoTabIndex
 {
-    [self setSeletedTabbarIndex:VIDEOPLAYER_TAB];
+    if ([LocaleUtils isChina])
+        return VIDEOPLAYER_TAB_CHINA;
+    else
+        return VIDEOPLAYER_TAB_NOT_CHINA;
+}
+
+- (void) gotoVideoPlayerTab
+{    
+    [self setSeletedTabbarIndex:[self getVideoTabIndex]];
 }
 
 - (VideoPlayController*) getVideoPlayerTab
 {
-    return (VideoPlayController*)([[self.tabBarController.viewControllers objectAtIndex:VIDEOPLAYER_TAB] topViewController]);
+    return (VideoPlayController*)([[self.tabBarController.viewControllers objectAtIndex:[self getVideoTabIndex]] topViewController]);
 }
 
 // for Book
