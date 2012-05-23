@@ -10,7 +10,6 @@
 
 #import "CoreDataUtil.h"
 #import "PPApplication.h"
-#import "MobClick.h"
 #import "PPTabBarController.h"
 #import "ReviewRequest.h"
 #import "WebViewTouchWindow.h"
@@ -21,10 +20,9 @@
 #import "DownloadService.h"
 
 #define kAppId			@"488119324"					// To be changed for each project
-#define kMobClickKey	@"4ec3d3045270151da9000025"		// To be changed for each project
 #define kDbFileName     @"Download"
 
-@interface DownloadAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate, MobClickDelegate>
+@interface DownloadAppDelegate : PPApplication <UIApplicationDelegate, UITabBarControllerDelegate>
 {
     UIBackgroundTaskIdentifier backgroundTask;
 }
