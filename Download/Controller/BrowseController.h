@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PPViewController.h"
 
+@class GADBannerView;
+
 @interface BrowseController : PPViewController
 
 - (IBAction)clickBrowse:(id)sender;
@@ -18,5 +20,6 @@
 @property (retain, nonatomic) IBOutlet UIButton *browseButton;
 @property (retain, nonatomic) IBOutlet UILabel *commonlyUsedWordsLabel;
 @property (retain, nonatomic) IBOutlet UIImageView *innerBackgroundView;
+@property (nonatomic, retain) GADBannerView* bannerView;
 
 @end

@@ -13,6 +13,8 @@
 #import "StringUtil.h"
 #import "DownloadResource.h"
 #import "UIViewController+DownloadViewControllerAddition.h"
+#import "DownloadAd.h"
+#import "GADBannerView.h"
 
 @implementation BrowseController
 @synthesize browseTextField;
@@ -20,6 +22,7 @@
 @synthesize browseButton;
 @synthesize commonlyUsedWordsLabel;
 @synthesize innerBackgroundView;
+@synthesize bannerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,6 +111,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    if (bannerView == nil){  
+        bannerView = [DownloadAd allocAdMobView:self];
+    }
+    
     [self addBlankView:70 currentResponder:browseTextField];    
     [super viewDidAppear:animated];
 }
@@ -170,6 +177,7 @@
     [browseButton release];
     [commonlyUsedWordsLabel release];
     [innerBackgroundView release];
+    [bannerView release];
     [super dealloc];
 }
 @end
